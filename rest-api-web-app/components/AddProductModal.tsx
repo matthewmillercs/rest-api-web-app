@@ -7,12 +7,14 @@ import {
     TextField,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import CloseIcon from "@mui/icons-material/Close";
 import React, { FC, useState } from "react";
+import { ProductItemType } from "../types/product-item";
 
 interface AddProductModalProps {
     open: boolean;
     onClose: any;
-    handleOnSubmit: (productInfo: any) => void;
+    handleOnSubmit: (productInfo: ProductItemType) => void;
 }
 
 export const AddProductModal: FC<AddProductModalProps> = (props) => {
@@ -63,6 +65,13 @@ export const AddProductModal: FC<AddProductModalProps> = (props) => {
         setCurrentIngredient("");
     };
 
+    const handleRemoveIngredient = (ingredient: string) => {
+        const newIngredientList = ingredientList.filter(
+            (item: string) => item !== ingredient
+        );
+        setIngredientList(newIngredientList);
+    };
+
     return (
         <Modal open={open} onClose={onClose}>
             <Box sx={style}>
@@ -88,32 +97,48 @@ export const AddProductModal: FC<AddProductModalProps> = (props) => {
                             }
                         }}
                     />
-                    <Button onClick={addIngredient}>Add Ingredient</Button>
+                    <Button sx={{ color: "#1a2027" }} onClick={addIngredient}>
+                        Add Ingredient
+                    </Button>
                 </Box>
                 <List sx={flexContainer}>
                     {ingredientList.map((ingredient, index) => {
                         return (
                             <ListItem
+                                key={index}
                                 sx={{
                                     width: "fit-content",
                                     border: "1px solid grey",
                                     height: "40px",
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    gap: "12px",
+                                    paddingRight: 0,
                                 }}
                             >
                                 <ListItemText
                                     key={index}
                                     primary={ingredient}
                                 />
+                                <Button
+                                    onClick={() =>
+                                        handleRemoveIngredient(ingredient)
+                                    }
+                                    sx={{ minWidth: 0 }}
+                                >
+                                    <CloseIcon></CloseIcon>
+                                </Button>
                             </ListItem>
                         );
                     })}
                 </List>
                 <Button
+                    sx={{ color: "#1a2027" }}
                     onClick={() => {
                         if (ingredientList.length && currentProductName) {
                             handleOnSubmit({
-                                productName: currentProductName,
-                                ingredients: ingredientList,
+                                product_name: currentProductName,
+                                product_ingredients: ingredientList,
                             });
                             clearFields();
                         }
