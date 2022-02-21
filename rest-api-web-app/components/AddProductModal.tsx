@@ -31,6 +31,7 @@ export const AddProductModal: FC<AddProductModalProps> = (props) => {
         display: "flex",
         flexDirection: "column",
         gap: 4,
+        outline: 0,
     };
 
     const flexContainer = {
