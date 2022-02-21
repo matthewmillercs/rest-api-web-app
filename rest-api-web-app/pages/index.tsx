@@ -41,7 +41,7 @@ const Dashboard: NextPage = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar
-                        sx={{ backgroundColor: "#B7D1DA", color: "#4E5340" }}
+                        sx={{ backgroundColor: "#191919", color: "#white" }}
                     >
                         <Typography
                             variant="h6"
@@ -63,7 +63,8 @@ const Dashboard: NextPage = () => {
                 sx={{
                     height: "100%",
                     width: "100%",
-                    backgroundColor: "white",
+                    position: "fixed",
+                    backgroundColor: "#f0f2f5",
                 }}
             >
                 <Box

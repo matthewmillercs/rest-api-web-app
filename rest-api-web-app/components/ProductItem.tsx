@@ -11,21 +11,21 @@ export const ProductItem = (props: ProductItemProps) => {
     return (
         <Card
             sx={{
-                height: 300,
+                height: 175,
                 width: 300,
-                backgroundColor: "#B7D1DA",
+                backgroundColor: "#white",
+                overflow: "auto",
+                boxShadow: 4,
             }}
         >
-            <CardContent sx={{ color: "#4E5340" }}>
-                <Typography sx={{ fontSize: 18 }} gutterBottom>
+            <CardContent sx={{ color: "black" }}>
+                <Typography variant="h5" gutterBottom>
                     {productItem ? productItem?.product_name : null}
                 </Typography>
-                <Typography sx={{ fontSize: 18 }} gutterBottom>
-                    Ingredients:{" "}
+                <Typography variant="body2" gutterBottom>
+                    Ingredients:
+                    {" " + productItem.product_ingredients.join(", ")}
                 </Typography>
-                {productItem.product_ingredients.map((ingredient: string) => {
-                    return <li>{ingredient}</li>;
-                })}
             </CardContent>
         </Card>
     );
