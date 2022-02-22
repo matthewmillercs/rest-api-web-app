@@ -145,7 +145,7 @@ export const AddProductModal: FC<AddProductModalProps> = (props) => {
                         }
                     }}
                 >
-                    Add Product
+                    Create Product
                 </Button>
             </Box>
         </Modal>

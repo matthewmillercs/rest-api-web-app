@@ -54,7 +54,7 @@ const Dashboard: NextPage = () => {
                             onClick={() => setModalOpen(true)}
                             color="inherit"
                         >
-                            Add Product
+                            Create Product
                         </Button>
                     </Toolbar>
                 </AppBar>
@@ -67,24 +67,37 @@ const Dashboard: NextPage = () => {
                     backgroundColor: "#f0f2f5",
                 }}
             >
-                <Box
-                    sx={{
-                        p: 2,
-                        display: "flex",
-                        flexDirection: "row",
-                        flexWrap: "wrap",
-                        gap: "12px",
-                    }}
-                >
-                    {productList.map((productItem, index) => {
-                        return (
-                            <ProductItem
-                                key={index}
-                                productItem={productItem}
-                            ></ProductItem>
-                        );
-                    })}
-                </Box>
+                {productList.length ? (
+                    <Box
+                        sx={{
+                            p: 2,
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            gap: "12px",
+                        }}
+                    >
+                        {productList.map((productItem, index) => {
+                            return (
+                                <ProductItem
+                                    key={index}
+                                    productItem={productItem}
+                                ></ProductItem>
+                            );
+                        })}
+                    </Box>
+                ) : (
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height: "100%",
+                        }}
+                    >
+                        No products created
+                    </Box>
+                )}
             </Box>
             <AddProductModal
                 open={modalOpen}
