@@ -2,10 +2,6 @@ from flask import request
 from app import app
 from app.models import create_product, get_products
 
-@app.route('/')
-def hello():
-    return 'Hello'
-
 # create a product
 @app.route('/create-product', methods = ['POST'])
 def create():
