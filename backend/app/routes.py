@@ -9,6 +9,8 @@ def create():
     if not product_name: 
         return {}, 400
     product_ingredients = request.json['product_ingredients']
+    if not product_ingredients:
+        return {}, 400
     return create_product(product_name, product_ingredients)
 
 # get all products
